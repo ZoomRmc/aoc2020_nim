@@ -3,6 +3,11 @@ AOC 2020 in Nim
 
 ## Notes
 
+### Day 6:
+The second time the input is presented as a bunch of lines separated by a blank one: time to write an iterator for `aocutils`. Nim doesn't allow to attach to native `lines` iter, so the easiest thing is to resort to collecting in an intermediate sequence. Nasty.
+
+zero-functional maps and folds (as well as std's `mapIt` and such) feel a bit clumsy with their 'a's and 'it's instead of just taking closures, thus again have to insert `block`s inside fold() parens.
+
 ### Day 5:
 
 In Part 2 we know the numbers are continuous except one, so `xor` it is.
