@@ -28,13 +28,6 @@ func parseCol(s: openArray[char]): int =
 func getID(s: openArray[char]): int =
   parseRow(s) * 8 + parseCol(s)
 
-func doTests() =
-  let s = ["FBFBBFFRLR", "BFFFBBFRRR"]
-  doAssert(parseRow(s[0]) == 44)
-  doAssert(parseCol(s[0]) == 5)
-  doAssert(getID(s[0]) == 357)
-  doAssert(getID(s[1]) == 567)
-
 when isMainModule:
   let input = toSeq(open("input/aoc05.txt").lines())
   
@@ -53,3 +46,11 @@ when isMainModule:
         a xor it
       )
     echo mi..ma --> fold(xorred, a xor it)
+
+func doTests() =
+  let s = ["FBFBBFFRLR", "BFFFBBFRRR"]
+  doAssert(parseRow(s[0]) == 44)
+  doAssert(parseCol(s[0]) == 5)
+  doAssert(getID(s[0]) == 357)
+  doAssert(getID(s[1]) == 567)
+

@@ -40,6 +40,7 @@ proc validatePass(pass: string, rule: string): bool =
     return true
   result = false
 
+#later rewritten as an iterator in aocutils
 proc readInput(path: string): seq[string] =
   var buf: string
   for line in open(path).lines():
