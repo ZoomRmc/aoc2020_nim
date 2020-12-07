@@ -10,7 +10,7 @@ func setWordBits(s: string): uint32 =
       a
     )
 
-func countAny(s: string): int =
+func countAny(s: string): int {.discardable.} =
   setWordbits(s).countSetBits()
 
 func countAll(s: string): int =
