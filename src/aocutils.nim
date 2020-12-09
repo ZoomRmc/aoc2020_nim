@@ -16,3 +16,10 @@ iterator buffered*[T](s: openArray[T]; by: T): string {.inline.} =
         hi += 1
       yield s[lo..<hi].join(" ")
       lo = hi
+
+proc minmax*[T](x: openArray[T]): (T, T) =
+  result = (x[0], x[0])
+  for i in 1..high(x):
+    if x[i] < result[0]: result[0] = x[i]
+    if result[1] < x[i]: result[1] = x[i]
+
