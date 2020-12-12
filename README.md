@@ -13,6 +13,23 @@ What I'm trying to stick to while writing the solutions, in order of importance:
 ## Notes on specific days
 **Spoilers below!**
 
+### Day 12:
+Pretty pleased with my solution, enum ordering + modulo arithmetic fit nicely, wonder if it's the intended way to approach the task. Writing the solution was too smooth: coded in the rotation around a point before reading it's always around `0,0`. Again, Eric went easy on us, so only quarter-turn angles = no trigonometry involved. Left out 2 approaches to CCW turns, not sure which one is better.
+
+### Day 11:
+Just counting indexes. Tedious and not much rewarding. Nim's std doesn't help much with anything 2D, so wrote a couple of iterators for `aocutils.nim` just in case. General technique of surrounding the matrix with empty cells could simplify working the edges/corners, but not necessary this time.
+
+Spent more time separating code into logical chunks, but can't say the resulting template and surrounding functions are a work of art. Pretty *meh* task overall, at least printing matrix to stdout looks cool.
+
+### Day 10:
+It's tempting to just throw a bunch of resources to brute-force it, and, surprisingly, that's what a lot of people did, not too succsessfully. A couple of minutes with pen and paper pays off.
+
+### Day 9:
+Basic algo, no surprises, double-ended queue and a bunch of `IntSet`s. Thank heavens we search for a *contiguous* set in P2.
+
+### Day 8:
+Surprisingly not hard, as the "program" runs sequentially without any branching, so simple counting works for loop detection. Dumb backtracking and flipping `jmp`s and `nop`s.
+
 ### Day 7:
 I don't like recursive solutions, but this task is not worth growing a forest over.
 Part 2: On the first run I expectedly forgot multiplication. Please, nod to your screen if you did too.
