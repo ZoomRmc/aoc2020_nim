@@ -13,6 +13,9 @@ What I'm trying to stick to while writing the solutions, in order of importance:
 ## Notes on specific days
 **Spoilers below!**
 
+### Day 13:
+Whe you see only prime numbers in input and test data you know there's a twist. Tried to come up with a solution without looking for any existing algos, so no CRT here. Accumulation and growing an increment (`jump` in the code) is certainly good enough for the task and almost instant.
+
 ### Day 12:
 Pretty pleased with my solution, enum ordering + modulo arithmetic fit nicely, wonder if it's the intended way to approach the task. Writing the solution was too smooth: coded in the rotation around a point before reading it's always around `0,0`. Again, Eric went easy on us, so only quarter-turn angles = no trigonometry involved. Left out 2 approaches to CCW turns, not sure which one is better.
 

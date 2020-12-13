@@ -7,7 +7,7 @@ license       = "GPL-2.0"
 srcDir        = "src"
 
 bin           = @["aoc01", "aoc02", "aoc03", "aoc04", "aoc05", "aoc06", "aoc07", "aoc08",
-                  "aoc09", "aoc10", "aoc11", "aoc12"]
+                  "aoc09", "aoc10", "aoc11", "aoc12", "aoc13"]
 
 
 # Dependencies
