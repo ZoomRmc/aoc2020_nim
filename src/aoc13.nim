@@ -31,18 +31,11 @@ func solveP1(time: int, input: string): int =
 # Input numbers are primes. Points of departure with the given interval
 # occur each N[x] * N[x+1]
 proc solveP2(s: seq[Bus]): int =
-  var
-    i = 0
-    jump = s[i].id
-  result = s[i].id
-  while i < s.len - 1:
-    let
-      offset = s[i+1].off
-      next = s[i+1].id
-    while (result + offset) mod next != 0:
+  var jump = 1
+  for (bus, offset) in s:
+    while (result + offset) mod bus != 0:
       result += jump
-    jump = jump * next
-    i.inc()
+    jump = jump * bus
 
 proc doTest() =
   for (data, r) in TEST:
