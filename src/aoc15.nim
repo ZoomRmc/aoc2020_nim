@@ -7,7 +7,7 @@ const
                ([2,3,1], 78), ([3,2,1], 438), ([3,1,2], 1836) ]
 
 type
-  Age = tuple[last, penul: int]
+  Age = int
   Game = object
     mem: Table[int, Age]
     last: int
@@ -15,22 +15,15 @@ type
 
 iterator memoryGame(g: var Game): int =
   while true:
+    let new = g.round - g.mem.getOrDefault(g.last, g.round) # 0 for newly spoken
+    g.mem[g.last] = g.round
     g.round.inc()
-    let age = g.mem[g.last] # ok: it's in state => it must be in the memory
-    g.last = if age.penul == 0:
-        0
-      else:
-        age.last - age.penul
-    # update memory for the newly spoken n
-    g.mem[g.last] = if g.mem.hasKey(g.last):
-        (last: g.round, penul: g.mem[g.last].last)
-      else:
-        (last: g.round, penul: 0)
-    yield g.last
+    g.last = new
+    yield new
 
 func prefillTable(s: openArray[int]): Game =
   for (i, n) in s.pairs():
-    result.mem[n] = (i+1, 0) # NOTE: what if some starting numbers repeat?
+    result.mem[n] = i+1 # NOTE: what if some starting numbers repeat?
     result.last = n
   result.round = s.len
 
@@ -40,8 +33,10 @@ proc runGame(game: var Game; endturn: int): int =
   result = game.last
 
 proc doTest() =
+  var game = prefillTable([0, 3, 6])
+  doAssert runGame(game, 10) == 0
   for (data, res) in TESTDATA:
-    var game = prefillTable(data)
+    game = prefillTable(data)
     doAssert runGame(game, ENDTURN1) == res
 
 when isMainModule:
@@ -55,4 +50,3 @@ when isMainModule:
 
   block Part2:
     echo runGame(game, ENDTURN2)
-  
