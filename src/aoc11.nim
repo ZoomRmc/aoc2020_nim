@@ -83,7 +83,7 @@ func countCell(m: seq[seq[Cell]], cell: Cell): int =
   m --> map( it --> filter(it == cell).count() ).sum()
 
 template solve(m: seq[seq[Cell]], part: Part): int =
-  var 
+  var
     stateChanged = true
     state = m
   while stateChanged:

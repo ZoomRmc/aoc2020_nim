@@ -36,8 +36,7 @@ func computeP1(s: openArray[(Dir, int)]): Point =
       result = moveTo(result, facing, val)
 
 func computeP2(s: openArray[(Dir, int)]): Point =
-  var
-    wp = WAYPOINT
+  var wp = WAYPOINT
   for (d, val) in s:
     if d in {N, E, S, W}:
       wp = moveTo(wp, d, val)

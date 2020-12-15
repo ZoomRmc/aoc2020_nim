@@ -24,6 +24,7 @@ func buildDifMap(s: openArray[int]): Option[CountTable[int]] =
     else:
       none(CountTable[int])
 
+#TODO clean up copying to a new seq
 proc countPaths(s: openArray[int]): int =
   var
     pathmap = initCountTable[int]()
