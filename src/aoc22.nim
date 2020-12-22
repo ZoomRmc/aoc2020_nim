@@ -1,6 +1,6 @@
 import zero_functional, deques, strutils, sets, hashes
 
-func calcWinner(deck: Deque[int]): int =
+func calcScore(deck: Deque[int]): int =
   for (i, c) in deck.pairs():
     result += c * (deck.len() - i)
 
@@ -18,36 +18,40 @@ proc solveP1(p1, p2: var Deque[int]): int =
     else:
       p2.addPair(c2, c1)
   result = if p1.len > p2.len:
-      calcWinner(p1)
+      calcScore(p1)
     else:
-      calcWinner(p2)
+      calcScore(p2)
 
 func `[]`[T, U, V](s: Deque[T], x: HSlice[U, V]): Deque[T] =
   let L = x.b - x.a + 1
   result = initDeque[T](L)
   for i in 0..<L: result.addLast(s[i + x.a])
 
-proc hash[T](d: Deque[T]): Hash =
-  var h: Hash = 0
-  for x in d:
-    h = h !& hash(x)
-  result = !$h
+## Using calcScore for hashing proved applicable and drastically speeds up computation
+#proc hash[T](d: Deque[T]): Hash =
+#  var h: Hash = 0
+#  for x in d:
+#    h = h !& hash(x)
+#  result = !$h
+
+func max(d: Deque[int]): int =
+  result = int.low()
+  for i in d:
+    result = max(result, i)
 
 proc game(p1, p2: var Deque[int]): bool =
-  var history = initHashSet[(Deque[int], Deque[int])]()
-
+  var history = initHashSet[(int, int)]()
   while true:
-    if history.containsOrIncl( (p1, p2) ) or (p2.len == 0):
+    if history.containsOrIncl( (calcScore(p1), calcScore(p2)) ) or (p2.len == 0):
       return true
     if p1.len == 0:
       return false
-
     let 
       c1 = p1.popFirst()
       c2 = p2.popFirst()
     var p1won = if (c1 <= p1.len) and (c2 <= p2.len):
         var (newdeck1, newdeck2) = (p1[0..<c1], p2[0..<c2])
-        game(newdeck1, newdeck2)
+        (newdeck1.max() > newdeck2.max()) or game(newdeck1, newdeck2)
       else:
         c1 > c2
     if p1won:
@@ -57,9 +61,9 @@ proc game(p1, p2: var Deque[int]): bool =
 
 proc solveP2(p1, p2: var Deque[int]): int =
   result = if game(p1, p2):
-      calcWinner(p1)
+      calcScore(p1)
     else:
-      calcWinner(p2)
+      calcScore(p2)
 
 when isMainModule:
   let (p1, p2) = block:
