@@ -23,7 +23,7 @@ proc minmax*[T](x: openArray[T]): (T, T) =
     if x[i] < result[0]: result[0] = x[i]
     if result[1] < x[i]: result[1] = x[i]
 
-iterator neighboursSafe*(w, h: int; cell: (int, int)): (int,int) {.closure.} =
+iterator neighboursSafe*(w, h: int; cell: (int, int)): (int, int) {.closure.} =
   var n: seq[(int,int)]
   let (x, y) = cell
   if x > 0:
@@ -39,7 +39,7 @@ iterator neighboursSafe*(w, h: int; cell: (int, int)): (int,int) {.closure.} =
   for pt in n:
     yield pt
 
-iterator neighboursUnsafe*(cell: (int, int)): (int,int) {.closure.} =
+iterator neighboursUnsafe*(cell: (int, int)): (int, int) {.closure.} =
   let 
     (x, y) = cell
     n = [ (x-1, y-1), (x, y-1), (x+1, y-1),

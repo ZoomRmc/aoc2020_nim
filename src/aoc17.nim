@@ -1,4 +1,4 @@
-import sequtils, zero_functional, strutils
+import zero_functional, strutils
 
 const 
   CYCLES = 6

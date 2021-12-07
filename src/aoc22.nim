@@ -1,4 +1,4 @@
-import zero_functional, deques, strutils, sets, hashes
+import zero_functional, deques, strutils, sets
 
 func calcScore(deck: Deque[int]): int =
   for (i, c) in deck.pairs():
@@ -42,7 +42,7 @@ func max(d: Deque[int]): int =
 proc game(p1, p2: var Deque[int]): bool =
   var history = initHashSet[(int, int)]()
   while true:
-    if history.containsOrIncl( (calcScore(p1), calcScore(p2)) ) or (p2.len == 0):
+    if (p2.len == 0) or history.containsOrIncl( (calcScore(p1), calcScore(p2)) ):
       return true
     if p1.len == 0:
       return false
