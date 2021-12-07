@@ -13,6 +13,39 @@ What I'm trying to stick to while writing the solutions, in order of importance:
 ## Notes on specific days
 **Spoilers below!**
 
+### Day 25
+Basic crypto. If you're afraid of Part 2 while solving the first - don't!
+
+### Day 24
+If you rely on properly parsing into the appropriate types and implement the basic operations, the rest is easy.
+
+### Day 23
+Linked lists/rings are unsurprisingly slow (nice to have all the available versions in std, though). Using an array as a substitute works great, even though you need to be careful with all the indexing. Managed to cut my initial "stream of consciousness" implementation by more than a third on a cleaning-up pass - as usual, turns out you need much fewer temporary variables than you'd think!
+
+### Day 22
+If you prepare the main logic right, solving the second part is easy via some tracking with a `HasSet` where the game's score serves as a key.
+
+### Day 21
+The day when I expected to need the whole information on the ingredients right from the start, so I didn't make a specific solution for Part 1. `std/sets` help *a lot*. Just a bunch of iterative exclusions and intersections. Straightforward and thus satisfying.
+
+### Day 22
+This was an easy one for me. Again, surprised to see some bright minds having some complications here. Nothing more than just reading the specifications and implementing it. And I have to say, we'd live in an utopian future by now if everyone could write the specs so good.
+
+### Day 20
+If I find a solution which is at the very least a little bit pleasant, I'll let you know.
+
+### Day 19
+Solved the first part with `pegs` and had to rewrite it all with `nre`, since pegs in std don't support recursion.
+
+### Day 18
+Finally rewritten using the somewhat clunky `eventParser` macro from `std/pegs`. The first part is easy, as we can eval right-to-left, the second one is too, as soon as you remember about the commutative properties of multiplication and treat a sum as a parenthesized one, in other words: multiply right to left, remember the product, multiply each term of a sum you meet by the product. Let the `pegs` deal with parenthesis.
+
+### Day 17:
+Game of Life in 3 and 4 dimensions, no twist. Nope, I wasn't going to treat *edge* cases this time just allotting extra cells on the edges of dimensions and skipping them when scanning in loops. Not feeling too enthusiastic by this point, so no generalized code, just copypasted the solution for Part 1 for Part 2.
+
+### Day 16:
+Wasted some time after I got the correct result (sets of possible fields for each position in a ticket) but expected to not need the final elimination so I hunted for an error that wasn't there. The fact that the input data has to be fitted so the results of filtering are unambiguous hints that this particular task doesn't have an elegant and truly satisfying solution. 
+
 ### Day 15:
 [Van Eck sequence](https://oeis.org/A181391), nothing fancy, though I opted for a mutating iterator here. Could be sped-up with a sequence instead of a table, but the speed of a naïve solution is still reasonable.
 
